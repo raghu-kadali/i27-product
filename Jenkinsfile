@@ -275,7 +275,7 @@ def imagevalidation() {
 
 
 
-// yeppudaina sytntax wrong unte munde fail avutundo ok
+// yeppudaina sytntax wrong unte munde fail avutundo
 
 
 

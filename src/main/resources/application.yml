@@ -32,7 +32,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    password: Gcp@2024
+    password: Welcome@2026
     url: jdbc:mysql://34.61.233.24:3306/learnerCrownClothing?useSSL=FALSE&allowPublicKeyRetrieval=true
     username: db_user
   jpa:

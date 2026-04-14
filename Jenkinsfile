@@ -79,7 +79,7 @@ pipeline {
         //     post {
         //         always {
         //             timeout(time: 1, unit: 'HOURS') {
-        //                 waitForQualityGate abortPipeline: true
+        //                 waitForQualityGate abortPipeline: true 
         //             }
         //         }
         //     }
@@ -252,7 +252,7 @@ def imagevalidation() {
         } catch (error) { 
             println ( "*****docker image not availble in registry, so we create and push the image to registry***")
             buildapp().call()  //OK BUILD APP FIRST 
-            dockerBuildandPush().call() // THEN CALL THE DOCKER BUILD and push method  
+            dockerBuildandPush().call() // THEN CALL THE DOCKER BUILD and push method  ok
         }
 
     }

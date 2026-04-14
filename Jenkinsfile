@@ -299,7 +299,7 @@ def imagevalidation() {
 
 // pipeline {
 //     environment {
-//         Application _Name = 'Eureka'
+//         Application _Name = 'eureka'
 //        POM_VERSION = readMavenPom().getVersion() //read pom and fetch the version that stores in one vatrible
 //        POM_PACKAGING =readMavenPom().getPackaging() //read pom and fetch the packaging that stores in one vatrible
 //     }

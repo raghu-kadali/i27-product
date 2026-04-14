@@ -33,7 +33,7 @@ spring:
       on-profile: dev
   datasource:
     password: Gcp@db2024
-    url: jdbc:mysql://104.154.189.57:3306/learnerCrownClothing?useSSL=FALSE
+    url: jdbc:mysql://34.61.233.24:3306/learnerCrownClothing?useSSL=FALSE
     username: db_user
   jpa:
     hibernate:
@@ -46,5 +46,5 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://34.30.38.211:5666/eureka/
+      defaultZone: http://34.30.38.211:5666//eureka/
 # our product page is merge in eureka so we give eureka endpoint ok fisrt ip and sligly change the rea;l url

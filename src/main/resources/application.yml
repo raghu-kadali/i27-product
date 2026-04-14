@@ -32,9 +32,9 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    password: Welcome@2026
+    password: Raghu#2026
     url: jdbc:mysql://34.61.233.24:3306/learnerCrownClothing?useSSL=FALSE&allowPublicKeyRetrieval=true
-    username: db_user
+    username: root
   jpa:
     hibernate:
       ddl-auto: update

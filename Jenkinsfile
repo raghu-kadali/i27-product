@@ -1,3 +1,5 @@
+
+// this is product page 
 pipeline {
     agent {
         label 'java-slave'
@@ -10,8 +12,8 @@ pipeline {
 
     environment {
         APPLICATION_NAME = 'product'
-        SONAR_HOST_URL = "http://35.188.126.241:9000"
-        SONAR_LOGIN_TOKEN = credentials('raghu_sonar_creds')
+        // SONAR_HOST_URL = "http://35.188.126.241:9000"
+        // SONAR_LOGIN_TOKEN = credentials('raghu_sonar_creds')
         POM_VERSION = readMavenPom().getVersion()
         POM_PACKAGING = readMavenPom().getPackaging()
         DOCKER_HUB = "docker.io/dockerhubraghu"
@@ -22,11 +24,11 @@ pipeline {
    
     parameters {
         choice(name: 'build_only', // it creates dropdown to user in jenkins ui build parameters
-              choices: ['no', 'yes'], description: 'Build only') //first write 'no' takes default value
-        choice(name: 'SonarQube_Analysis', 
-              choices: ['no', 'yes'], description: 'Perform SonarQube analysis')
+              choices: ['yes', 'no'], description: 'Build only') //first write 'no' takes default value
+        // choice(name: 'SonarQube_Analysis', 
+        //       choices: ['yes', 'no'], description: 'Perform SonarQube analysis')
         choice(name: 'docker_build_and_push', 
-             choices: ['no', 'yes'], description: 'Build and push Docker image')
+             choices: ['yes', 'no'], description: 'Build and push Docker image')
         choice(name: 'deploy_to_dev', 
              choices: ['no', 'yes'], description: 'Deploy to dev environment')  
         choice(name: 'deploy_to_test', 
@@ -57,31 +59,31 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            when {
-                anyOf { 
-                    expression { params.SonarQube_Analysis == 'yes' }
-                }
-            }
-            steps {
-                echo "*** Starting SonarQube analysis"
-                withSonarQubeEnv('SonarQubeServer') {
-                    sh """
-                        mvn clean verify sonar:sonar \
-                            -Dsonar.projectKey=i27-eureka \
-                            -Dsonar.host.url=${env.SONAR_HOST_URL} \
-                            -Dsonar.login=${env.SONAR_LOGIN_TOKEN}
-                    """
-                }
-            }
-            post {
-                always {
-                    timeout(time: 1, unit: 'HOURS') {
-                        waitForQualityGate abortPipeline: true
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     when {
+        //         anyOf { 
+        //             expression { params.SonarQube_Analysis == 'yes' }
+        //         }
+        //     }
+        //     steps {
+        //         echo "*** Starting SonarQube analysis"
+        //         withSonarQubeEnv('SonarQubeServer') {
+        //             sh """
+        //                 mvn clean verify sonar:sonar \
+        //                     -Dsonar.projectKey=i27-eureka \
+        //                     -Dsonar.host.url=${env.SONAR_HOST_URL} \
+        //                     -Dsonar.login=${env.SONAR_LOGIN_TOKEN}
+        //             """
+        //         }
+        //     }
+        //     post {
+        //         always {
+        //             timeout(time: 1, unit: 'HOURS') {
+        //                 waitForQualityGate abortPipeline: true
+        //             }
+        //         }
+        //     }
+        // }
 
         // stage('formatBuild') {
         //     steps {
@@ -134,7 +136,7 @@ pipeline {
             }
         }
 //---------------------------------------------------------------
-        stage('Deploy to stage env') {
+       stage('Deploy to stage env') {
             when {
                 anyOf {
                         expression { params.deploy_to_stage == 'yes' }
@@ -184,7 +186,6 @@ pipeline {
 
 
 
-
 // ------------------------***-these actual methods we write here to call in above stages to implement the every stage in pipeline simply and multiple tiems clal these methods******* ---------------------------------------------------------------------------
 
 def buildapp(){
@@ -226,6 +227,7 @@ def dockerDeploy(envDeploy,port) {
                    script {
                     try {
                     // stop the container
+                    // vmipaddress is pvt ip placed in manage jenkins syyste environment varbles name and pvt ip
                    sh "sshpass -p $PASSWORD -v ssh -o StrictHostKeyChecking=no $USERNAME@$docker_vm_ip_address \"docker stop ${env.APPLICATION_NAME}-${envDeploy}\""
                    // remove the container
                    sh "sshpass -p $PASSWORD -v ssh -o StrictHostKeyChecking=no $USERNAME@$docker_vm_ip_address \"docker rm ${env.APPLICATION_NAME}-${envDeploy}\""
@@ -273,7 +275,7 @@ def imagevalidation() {
 
 
 
-// yeppudaina sytntax wrong unte munde fail avutundo
+// yeppudaina sytntax wrong unte munde fail avutundo ok
 
 
 

@@ -46,5 +46,5 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://34.30.38.211:5666//eureka/
+      defaultZone: http://34.30.38.211:5666/eureka/
 # our product page is merge in eureka so we give eureka endpoint ok fisrt ip and sligly change the rea;l url

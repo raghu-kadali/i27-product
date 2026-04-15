@@ -34,7 +34,7 @@ spring:
   datasource:
     password: Raghu@2025
     url: jdbc:mysql://136.113.39.247:3306/learnerCrownClothing?useSSL=FALSE&allowPublicKeyRetrieval=true
-    username: db_user
+    username: dbuser
   jpa:
     hibernate:
       ddl-auto: update

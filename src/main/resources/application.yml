@@ -1,6 +1,7 @@
 spring:
   application:
     name: learner-product-api
+
   profiles:
     active: dev
 
@@ -11,7 +12,7 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3306/product_managment?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/product_managment?useSSL=false&allowPublicKeyRetrieval=true&sslMode=DISABLED&serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -38,7 +39,7 @@ spring:
       on-profile: dev
 
   datasource:
-    url: jdbc:mysql://136.113.39.247:3306/learnerCrownClothing?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://136.113.39.247:3306/learnerCrownClothing?useSSL=false&allowPublicKeyRetrieval=true&sslMode=DISABLED&serverTimezone=UTC
     username: db_user
     password: Raghu@2025
     driver-class-name: com.mysql.cj.jdbc.Driver

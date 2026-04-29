@@ -1,5 +1,2 @@
-@Library("com.i27-academy.slb") _
-dockerpipeline(
-    app_Name: "product"
-
-)
+@Library("com.i27academy.slb") _
+k8spipeline appName: 'product'
